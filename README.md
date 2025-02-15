@@ -14,24 +14,35 @@ A modern, responsive website for DexLanka software company built with React.js a
 ## Pages
 
 ### Home Page
-![Home Page](screenshots/home.png)
-Modern landing page with company overview and key services.
+Homepage featuring a hero section with company introduction, key features, and service highlights.
 
 ### About Us
-![About Us](screenshots/about.png)
-Company history, values, and team information.
+Company history, values, team information, and key statistics showcasing our growth and achievements.
 
 ### Services
-![Services](screenshots/services.png)
-Detailed service offerings and capabilities.
+Comprehensive service offerings including:
+- Web Development
+- Mobile Development
+- Cloud Solutions
+- IT Consulting
+- Custom Software Development
+- Quality Assurance
 
 ### Projects
-![Projects](screenshots/projects.png)
-Portfolio showcase with client testimonials.
+Portfolio showcase featuring:
+- E-commerce Platform
+- Healthcare App
+- Cloud Migration
+- Analytics Dashboard
+- AI Chatbot
+- Security System
 
 ### Contact
-![Contact](screenshots/contact.png)
-Contact form, business hours, and location information.
+Interactive contact page with:
+- Contact form
+- Company location
+- Business hours
+- Google Maps integration
 
 ## Technologies Used
 
@@ -67,6 +78,25 @@ To build the project for production:
 ```bash
 npm run build
 ```
+
+## Screenshots
+
+To add screenshots to the project:
+
+1. Create a `screenshots` directory in the root of the project
+2. Take screenshots of each page:
+   - Home page (`/`)
+   - About Us page (`/about`)
+   - Services page (`/services`)
+   - Projects page (`/projects`)
+   - Contact page (`/contact`)
+3. Save screenshots with appropriate names:
+   - home.png
+   - about.png
+   - services.png
+   - projects.png
+   - contact.png
+4. Add screenshots to the `screenshots` directory
 
 ## License
 
