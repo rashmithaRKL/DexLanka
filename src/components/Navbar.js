@@ -1,57 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Navbar() {
+const Navbar = () => {
   return (
-    <nav className="bg-navy-blue shadow-lg">
-      <div className="container mx-auto px-4">
+    <nav className="bg-white shadow-lg">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-white text-xl font-bold">DexLanka</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="text-white hover:text-red transition duration-300 py-5">
-              Home
-            </Link>
-            <Link to="/about" className="text-white hover:text-red transition duration-300 py-5">
-              About Us
-            </Link>
-            <Link to="/services" className="text-white hover:text-red transition duration-300 py-5">
-              Services
-            </Link>
-            <Link to="/projects" className="text-white hover:text-red transition duration-300 py-5">
-              Projects
-            </Link>
-            <Link to="/contact" className="text-white hover:text-red transition duration-300 py-5">
-              Contact
-            </Link>
+          <div className="flex items-center">
+            <a href="/" className="flex-shrink-0">
+              <span className="text-2xl font-bold text-blue-600">DexLanka</span>
+            </a>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              className="text-white hover:text-red focus:outline-none"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              <a href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="/services" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+              <a href="/about" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+              <a href="/contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            </div>
           </div>
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
