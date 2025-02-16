@@ -1,97 +1,136 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { fadeIn, staggerContainer, rotate3d, float } from '../utils/animations';
+import { FiUsers, FiAward, FiCode, FiSmile } from 'react-icons/fi';
 
 const About = () => {
   const stats = [
-    { label: 'Years of Experience', value: '10+' },
-    { label: 'Successful Projects', value: '500+' },
-    { label: 'Happy Clients', value: '200+' },
-    { label: 'Team Members', value: '50+' }
+    { label: 'Happy Clients', value: '200+', icon: <FiSmile /> },
+    { label: 'Projects Completed', value: '500+', icon: <FiCode /> },
+    { label: 'Team Members', value: '50+', icon: <FiUsers /> },
+    { label: 'Awards Won', value: '25+', icon: <FiAward /> }
   ];
 
   const values = [
     {
       title: 'Innovation',
-      description: "We constantly push the boundaries of what's possible in technology.",
-      icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      description: 'We embrace cutting-edge technologies and creative solutions.',
     },
     {
-      title: 'Excellence',
-      description: "We strive for excellence in everything we do, from code to customer service.",
-      icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      )
+      title: 'Quality',
+      description: 'We deliver excellence in every project we undertake.',
     },
     {
       title: 'Collaboration',
-      description: "We believe in working closely with our clients to achieve the best results.",
-      icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      )
-    },
-    {
-      title: 'Integrity',
-      description: "We maintain the highest standards of integrity in all our business dealings.",
-      icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
+      description: 'We work closely with our clients to achieve the best results.',
     }
   ];
 
   return (
-    <section className="py-20 bg-white" id="about">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">About DexLanka</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We are a team of passionate technologists dedicated to helping businesses succeed in the digital age
-          </p>
+    <motion.section
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.25 }}
+      className="py-20 relative overflow-hidden"
+    >
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          variants={float}
+          className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+        />
+        <motion.div
+          variants={float}
+          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* About Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <motion.div variants={fadeIn('right', 0.2)} className="space-y-6">
+            <h2 className="text-4xl font-bold mb-6">About DexLanka</h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              We are a team of passionate developers, designers, and digital innovators dedicated to transforming businesses through technology. With years of experience and a commitment to excellence, we deliver cutting-edge solutions that drive success.
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Our mission is to empower businesses with innovative digital solutions that drive growth and success in the modern world. We combine creativity, technology, and strategy to deliver exceptional results.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={rotate3d(0.3)}
+            className="relative"
+          >
+            <div className="relative w-full h-[400px] perspective-1000">
+              <motion.div
+                animate={{
+                  rotateY: [0, 10, 0],
+                  rotateX: [0, 5, 0],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: "easeInOut",
+                }}
+                className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-2xl p-8 text-white"
+              >
+                <div className="absolute inset-2 bg-white/10 rounded-xl backdrop-blur-sm p-6">
+                  <div className="space-y-4">
+                    <div className="w-20 h-2 bg-white/20 rounded-full" />
+                    <div className="w-32 h-2 bg-white/20 rounded-full" />
+                    <div className="w-16 h-2 bg-white/20 rounded-full" />
+                  </div>
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+                    {[1, 2, 3, 4].map((item) => (
+                      <div key={item} className="h-20 bg-white/10 rounded-lg" />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+        <motion.div
+          variants={fadeIn('up', 0.3)}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+        >
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
-              <div className="text-gray-600">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Company Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {values.map((value, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                {value.icon}
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 bg-white rounded-xl shadow-lg"
+            >
+              <div className="text-blue-600 text-3xl mb-4 flex justify-center">
+                {stat.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
-              <p className="text-gray-600">{value.description}</p>
-            </div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
+              <div className="text-gray-600">{stat.label}</div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Mission Statement */}
-        <div className="bg-blue-600 text-white rounded-2xl p-8 md:p-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="text-lg text-blue-100">
-              To empower businesses with innovative digital solutions that drive growth, 
-              efficiency, and competitive advantage in an ever-evolving technological landscape.
-            </p>
+        {/* Values Section */}
+        <motion.div variants={fadeIn('up', 0.4)} className="text-center mb-12">
+          <h3 className="text-3xl font-bold mb-12">Our Values</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 bg-white rounded-xl shadow-lg"
+              >
+                <h4 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h4>
+                <p className="text-gray-600">{value.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
