@@ -92,10 +92,24 @@ const Services = () => {
                 variants={tiltHover}
               >
                 <motion.div 
-                  className={`w-16 h-16 rounded-lg bg-${service.color}-100 flex items-center justify-center mb-6 text-${service.color}-600`}
+                  className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6`}
                   variants={floatRotate}
                   initial="hidden"
                   animate="show"
+                  style={{
+                    backgroundColor: service.color === 'blue' ? '#EBF5FF' :
+                                   service.color === 'purple' ? '#F3E8FF' :
+                                   service.color === 'pink' ? '#FCE7F3' :
+                                   service.color === 'green' ? '#DCFCE7' :
+                                   service.color === 'indigo' ? '#E0E7FF' :
+                                   '#FEE2E2',
+                    color: service.color === 'blue' ? '#2563EB' :
+                           service.color === 'purple' ? '#9333EA' :
+                           service.color === 'pink' ? '#DB2777' :
+                           service.color === 'green' ? '#16A34A' :
+                           service.color === 'indigo' ? '#4F46E5' :
+                           '#DC2626'
+                  }}
                 >
                   {service.icon}
                 </motion.div>
@@ -106,7 +120,17 @@ const Services = () => {
                   whileHover={{ scale: 1.05, z: 20 }}
                   whileTap={{ scale: 0.95, z: -10 }}
                 >
-                  <button className={`text-${service.color}-600 font-semibold flex items-center group`}>
+                  <button 
+                    className="font-semibold flex items-center group"
+                    style={{
+                      color: service.color === 'blue' ? '#2563EB' :
+                             service.color === 'purple' ? '#9333EA' :
+                             service.color === 'pink' ? '#DB2777' :
+                             service.color === 'green' ? '#16A34A' :
+                             service.color === 'indigo' ? '#4F46E5' :
+                             '#DC2626'
+                    }}
+                  >
                     Learn More
                     <svg
                       className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"

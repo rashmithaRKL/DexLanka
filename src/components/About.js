@@ -1,14 +1,52 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer, rotate3d, float, perspective3d, tiltHover, floatRotate, cardFlip3D } from '../utils/animations';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { fadeIn, staggerContainer, rotate3d, float, perspective3d, tiltHover, floatRotate, cardFlip3D, counterAnimation } from '../utils/animations';
 import { FiUsers, FiAward, FiCode, FiSmile } from 'react-icons/fi';
+
+const CounterComponent = ({ value, duration = 2 }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  const inView = useInView(countRef);
+  const valueNum = parseInt(value);
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const end = parseInt(valueNum);
+      const increment = end / (duration * 60);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start > end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 1000 / 60);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, valueNum, duration]);
+
+  return (
+    <motion.span
+      ref={countRef}
+      variants={counterAnimation}
+      initial="initial"
+      animate={inView ? "animate" : "initial"}
+      className="text-3xl font-bold text-gray-900"
+    >
+      {count}+
+    </motion.span>
+  );
+};
 
 const About = () => {
   const stats = [
-    { label: 'Happy Clients', value: '200+', icon: <FiSmile /> },
-    { label: 'Projects Completed', value: '500+', icon: <FiCode /> },
-    { label: 'Team Members', value: '50+', icon: <FiUsers /> },
-    { label: 'Awards Won', value: '25+', icon: <FiAward /> }
+    { label: 'Happy Clients', value: '200', icon: <FiSmile /> },
+    { label: 'Projects Completed', value: '500', icon: <FiCode /> },
+    { label: 'Team Members', value: '50', icon: <FiUsers /> },
+    { label: 'Awards Won', value: '25', icon: <FiAward /> }
   ];
 
   const values = [
@@ -129,8 +167,8 @@ const About = () => {
               >
                 {stat.icon}
               </motion.div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-              <div className="text-gray-600">{stat.label}</div>
+              <CounterComponent value={stat.value} />
+              <div className="text-gray-600 mt-2">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
