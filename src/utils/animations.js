@@ -159,3 +159,91 @@ export const scaleIn = (delay) => {
     },
   };
 };
+
+export const tiltHover = {
+  rest: {
+    rotateX: 0,
+    rotateY: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      type: "tween",
+      ease: "easeOut"
+    }
+  },
+  hover: {
+    rotateX: [-5, 5],
+    rotateY: [-5, 5],
+    scale: 1.05,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+      stiffness: 300,
+      damping: 20
+    }
+  }
+};
+
+export const perspective3d = (delay) => {
+  return {
+    hidden: {
+      rotateX: 45,
+      rotateY: -45,
+      translateZ: -100,
+      opacity: 0
+    },
+    show: {
+      rotateX: 0,
+      rotateY: 0,
+      translateZ: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        delay,
+        duration: 1.8,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+};
+
+export const floatRotate = {
+  hidden: {
+    y: 0,
+    rotateY: 0
+  },
+  show: {
+    y: [-15, 15],
+    rotateY: [-10, 10],
+    transition: {
+      y: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 2.5,
+        ease: "easeInOut"
+      },
+      rotateY: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 3,
+        ease: "easeInOut"
+      }
+    }
+  }
+};
+
+export const cardFlip3D = {
+  initial: {
+    rotateY: 0,
+    z: 0
+  },
+  hover: {
+    rotateY: 180,
+    z: 50,
+    transition: {
+      duration: 0.6,
+      ease: "easeInOut"
+    }
+  }
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer, rotate3d, float } from '../utils/animations';
+import { fadeIn, staggerContainer, rotate3d, float, perspective3d, tiltHover, floatRotate, cardFlip3D } from '../utils/animations';
 import { FiUsers, FiAward, FiCode, FiSmile } from 'react-icons/fi';
 
 const About = () => {
@@ -37,11 +37,11 @@ const About = () => {
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          variants={float}
+          variants={floatRotate}
           className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
         />
         <motion.div
-          variants={float}
+          variants={floatRotate}
           className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
         />
       </div>
@@ -49,7 +49,10 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* About Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div variants={fadeIn('right', 0.2)} className="space-y-6">
+          <motion.div 
+            variants={perspective3d(0.2)} 
+            className="space-y-6 perspective-1000"
+          >
             <h2 className="text-4xl font-bold mb-6">About DexLanka</h2>
             <p className="text-gray-600 text-lg leading-relaxed">
               We are a team of passionate developers, designers, and digital innovators dedicated to transforming businesses through technology. With years of experience and a commitment to excellence, we deliver cutting-edge solutions that drive success.
@@ -61,9 +64,14 @@ const About = () => {
 
           <motion.div
             variants={rotate3d(0.3)}
-            className="relative"
+            className="relative perspective-1000"
+            whileHover="hover"
+            initial="rest"
           >
-            <div className="relative w-full h-[400px] perspective-1000">
+            <motion.div
+              className="relative w-full h-[400px]"
+              variants={tiltHover}
+            >
               <motion.div
                 animate={{
                   rotateY: [0, 10, 0],
@@ -74,9 +82,12 @@ const About = () => {
                   duration: 6,
                   ease: "easeInOut",
                 }}
-                className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-2xl p-8 text-white"
+                className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-2xl p-8 text-white transform-style-3d"
               >
-                <div className="absolute inset-2 bg-white/10 rounded-xl backdrop-blur-sm p-6">
+                <motion.div 
+                  className="absolute inset-2 bg-white/10 rounded-xl backdrop-blur-sm p-6"
+                  variants={floatRotate}
+                >
                   <div className="space-y-4">
                     <div className="w-20 h-2 bg-white/20 rounded-full" />
                     <div className="w-32 h-2 bg-white/20 rounded-full" />
@@ -84,29 +95,40 @@ const About = () => {
                   </div>
                   <div className="mt-8 grid grid-cols-2 gap-4">
                     {[1, 2, 3, 4].map((item) => (
-                      <div key={item} className="h-20 bg-white/10 rounded-lg" />
+                      <motion.div 
+                        key={item} 
+                        className="h-20 bg-white/10 rounded-lg"
+                        whileHover={{ scale: 1.05, translateZ: 20 }}
+                      />
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
         {/* Stats Section */}
         <motion.div
-          variants={fadeIn('up', 0.3)}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+          variants={perspective3d(0.3)}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 perspective-1000"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }}
-              className="text-center p-6 bg-white rounded-xl shadow-lg"
+              className="text-center p-6 bg-white rounded-xl shadow-lg transform-style-3d"
+              whileHover="hover"
+              initial="rest"
+              variants={tiltHover}
             >
-              <div className="text-blue-600 text-3xl mb-4 flex justify-center">
+              <motion.div 
+                className="text-blue-600 text-3xl mb-4 flex justify-center"
+                variants={floatRotate}
+                initial="hidden"
+                animate="show"
+              >
                 {stat.icon}
-              </div>
+              </motion.div>
               <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
               <div className="text-gray-600">{stat.label}</div>
             </motion.div>
@@ -114,17 +136,24 @@ const About = () => {
         </motion.div>
 
         {/* Values Section */}
-        <motion.div variants={fadeIn('up', 0.4)} className="text-center mb-12">
+        <motion.div 
+          variants={perspective3d(0.4)} 
+          className="text-center mb-12 perspective-1000"
+        >
           <h3 className="text-3xl font-bold mb-12">Our Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05 }}
-                className="p-6 bg-white rounded-xl shadow-lg"
+                className="p-6 bg-white rounded-xl shadow-lg transform-style-3d"
+                whileHover="hover"
+                initial="rest"
+                variants={cardFlip3D}
               >
-                <h4 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h4>
-                <p className="text-gray-600">{value.description}</p>
+                <motion.div className="backface-hidden">
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h4>
+                  <p className="text-gray-600">{value.description}</p>
+                </motion.div>
               </motion.div>
             ))}
           </div>

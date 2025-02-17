@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer, zoomIn, float } from '../utils/animations';
+import { fadeIn, staggerContainer, zoomIn, float, tiltHover, perspective3d, floatRotate } from '../utils/animations';
 import { FiMonitor, FiSmartphone, FiLayout, FiTrendingUp, FiServer, FiShield } from 'react-icons/fi';
 
 const Services = () => {
@@ -78,20 +78,33 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              variants={zoomIn(0.2 + index * 0.1, 0.6)}
-              className="relative group"
+              variants={perspective3d(0.2 + index * 0.1)}
+              className="relative group perspective-1000"
+              whileHover="hover"
+              initial="rest"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl transform rotate-2 group-hover:rotate-1 transition-transform duration-300 opacity-0 group-hover:opacity-10" />
-              <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className={`w-16 h-16 rounded-lg bg-${service.color}-100 flex items-center justify-center mb-6 text-${service.color}-600 transform group-hover:scale-110 transition-transform duration-300`}>
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl transform opacity-0 group-hover:opacity-10"
+                variants={tiltHover}
+              />
+              <motion.div 
+                className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 preserve-3d"
+                variants={tiltHover}
+              >
+                <motion.div 
+                  className={`w-16 h-16 rounded-lg bg-${service.color}-100 flex items-center justify-center mb-6 text-${service.color}-600`}
+                  variants={floatRotate}
+                  initial="hidden"
+                  animate="show"
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-6"
+                  className="mt-6 transform-style-3d"
+                  whileHover={{ scale: 1.05, z: 20 }}
+                  whileTap={{ scale: 0.95, z: -10 }}
                 >
                   <button className={`text-${service.color}-600 font-semibold flex items-center group`}>
                     Learn More
@@ -110,7 +123,7 @@ const Services = () => {
                     </svg>
                   </button>
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
