@@ -6,37 +6,37 @@ import { FiMonitor, FiSmartphone, FiLayout, FiTrendingUp, FiServer, FiShield } f
 const Services = () => {
   const services = [
     {
-      icon: <FiMonitor className="w-8 h-8" />,
+      icon: <FiMonitor size={32} className="text-current" />,
       title: "Web Development",
       description: "Custom websites and web applications built with modern technologies and best practices.",
       color: "blue"
     },
     {
-      icon: <FiSmartphone className="w-8 h-8" />,
+      icon: <FiSmartphone size={32} className="text-current" />,
       title: "Mobile Development",
       description: "Native and cross-platform mobile applications for iOS and Android.",
       color: "purple"
     },
     {
-      icon: <FiLayout className="w-8 h-8" />,
+      icon: <FiLayout size={32} className="text-current" />,
       title: "UI/UX Design",
       description: "User-centered design solutions that enhance user experience and engagement.",
       color: "pink"
     },
     {
-      icon: <FiTrendingUp className="w-8 h-8" />,
+      icon: <FiTrendingUp size={32} className="text-current" />,
       title: "Digital Marketing",
       description: "Strategic digital marketing solutions to grow your online presence.",
       color: "green"
     },
     {
-      icon: <FiServer className="w-8 h-8" />,
+      icon: <FiServer size={32} className="text-current" />,
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure and deployment solutions.",
       color: "indigo"
     },
     {
-      icon: <FiShield className="w-8 h-8" />,
+      icon: <FiShield size={32} className="text-current" />,
       title: "Cybersecurity",
       description: "Comprehensive security solutions to protect your digital assets.",
       color: "red"
@@ -91,28 +91,32 @@ const Services = () => {
                 className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 preserve-3d"
                 variants={tiltHover}
               >
-                <motion.div 
-                  className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6`}
-                  variants={floatRotate}
-                  initial="hidden"
-                  animate="show"
-                  style={{
-                    backgroundColor: service.color === 'blue' ? '#EBF5FF' :
-                                   service.color === 'purple' ? '#F3E8FF' :
-                                   service.color === 'pink' ? '#FCE7F3' :
-                                   service.color === 'green' ? '#DCFCE7' :
-                                   service.color === 'indigo' ? '#E0E7FF' :
-                                   '#FEE2E2',
-                    color: service.color === 'blue' ? '#2563EB' :
-                           service.color === 'purple' ? '#9333EA' :
-                           service.color === 'pink' ? '#DB2777' :
-                           service.color === 'green' ? '#16A34A' :
-                           service.color === 'indigo' ? '#4F46E5' :
-                           '#DC2626'
-                  }}
-                >
-                  {service.icon}
-                </motion.div>
+                <div className="relative w-16 h-16 mb-6">
+                  <div 
+                    className="absolute inset-0 rounded-lg"
+                    style={{
+                      backgroundColor: service.color === 'blue' ? '#EBF5FF' :
+                                     service.color === 'purple' ? '#F3E8FF' :
+                                     service.color === 'pink' ? '#FCE7F3' :
+                                     service.color === 'green' ? '#DCFCE7' :
+                                     service.color === 'indigo' ? '#E0E7FF' :
+                                     '#FEE2E2'
+                    }}
+                  />
+                  <div 
+                    className="relative w-full h-full flex items-center justify-center"
+                    style={{
+                      color: service.color === 'blue' ? '#2563EB' :
+                             service.color === 'purple' ? '#9333EA' :
+                             service.color === 'pink' ? '#DB2777' :
+                             service.color === 'green' ? '#16A34A' :
+                             service.color === 'indigo' ? '#4F46E5' :
+                             '#DC2626'
+                    }}
+                  >
+                    {service.icon}
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
                 <motion.div
