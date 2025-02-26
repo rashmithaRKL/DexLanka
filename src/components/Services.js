@@ -8,7 +8,7 @@ const Services = () => {
     {
       icon: <FiMonitor size={32} className="text-current" />,
       title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies and best practices.",
+      description: "Custom websites and web applications built with modern technologies.",
       color: "blue"
     },
     {
