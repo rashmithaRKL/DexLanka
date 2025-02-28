@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import logo from '../assets/images/logo.svg';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,8 +48,27 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-blue-600">DexLanka</span>
+          <Link 
+            to="/" 
+            className="flex items-center space-x-3 group"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <img 
+                src={logo} 
+                alt="DexLanka Logo" 
+                className="h-12 w-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300" 
+              />
+            </motion.div>
+            <motion.span 
+              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              DexLanka
+            </motion.span>
           </Link>
 
           {/* Desktop Navigation */}
