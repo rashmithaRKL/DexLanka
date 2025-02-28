@@ -6,6 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        navy: {
+          800: '#000066', // Slightly lighter navy blue
+          900: '#000080', // Navy blue color
+        },
         blue: {
           50: '#EFF6FF',
           100: '#DBEAFE',
