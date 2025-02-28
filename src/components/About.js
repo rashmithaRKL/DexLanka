@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { fadeIn, staggerContainer, rotate3d, float, perspective3d, tiltHover, floatRotate, cardFlip3D, counterAnimation } from '../utils/animations';
+import { staggerContainer, rotate3d, perspective3d, tiltHover, floatRotate, cardFlip3D, counterAnimation } from '../utils/animations';
 import { FiUsers, FiAward, FiCode, FiSmile } from 'react-icons/fi';
 
-const CounterComponent = ({ value, duration = 2 }) => {
+const CounterComponent = ({ value, duration = 1.5 }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(null);
   const inView = useInView(countRef);
@@ -34,7 +34,7 @@ const CounterComponent = ({ value, duration = 2 }) => {
       variants={counterAnimation}
       initial="initial"
       animate={inView ? "animate" : "initial"}
-      className="text-3xl font-bold text-gray-900"
+      className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
     >
       {count}+
     </motion.span>
@@ -76,11 +76,13 @@ const About = () => {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           variants={floatRotate}
-          className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+          animate="show"
+          className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform-gpu"
         />
         <motion.div
           variants={floatRotate}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+          animate="show"
+          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform-gpu"
         />
       </div>
 
@@ -160,15 +162,29 @@ const About = () => {
               variants={tiltHover}
             >
               <motion.div 
-                className="text-blue-600 text-3xl mb-4 flex justify-center"
+                className="text-blue-600 mb-6 flex justify-center items-center h-16 relative"
                 variants={floatRotate}
                 initial="hidden"
                 animate="show"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                {stat.icon}
+                <div className="text-4xl bg-blue-50 p-4 rounded-xl">
+                  {React.cloneElement(stat.icon, { 
+                    size: 40, 
+                    className: "text-blue-600" 
+                  })}
+                </div>
               </motion.div>
               <CounterComponent value={stat.value} />
-              <div className="text-gray-600 mt-2">{stat.label}</div>
+              <motion.div 
+                className="text-gray-600 mt-3 font-medium"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                {stat.label}
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

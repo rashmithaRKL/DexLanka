@@ -211,22 +211,30 @@ export const perspective3d = (delay) => {
 export const floatRotate = {
   hidden: {
     y: 0,
-    rotateY: 0
+    rotateY: 0,
+    scale: 1
   },
   show: {
-    y: [-15, 15],
-    rotateY: [-10, 10],
+    y: [-10, 10],
+    rotateY: [-5, 5],
+    scale: [1, 1.02, 1],
     transition: {
       y: {
         repeat: Infinity,
         repeatType: "reverse",
-        duration: 2.5,
+        duration: 2,
         ease: "easeInOut"
       },
       rotateY: {
         repeat: Infinity,
         repeatType: "reverse",
-        duration: 3,
+        duration: 2.5,
+        ease: "easeInOut"
+      },
+      scale: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 2,
         ease: "easeInOut"
       }
     }
@@ -249,13 +257,18 @@ export const cardFlip3D = {
 };
 
 export const counterAnimation = {
-  initial: { opacity: 0, scale: 0.5 },
+  initial: { 
+    opacity: 0, 
+    scale: 0.5,
+    y: 20
+  },
   animate: { 
     opacity: 1, 
     scale: 1,
+    y: 0,
     transition: {
-      duration: 0.5,
-      ease: "easeOut"
+      duration: 0.6,
+      ease: [0.6, -0.05, 0.01, 0.99]
     }
   }
 };

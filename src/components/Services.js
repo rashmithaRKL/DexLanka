@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer, zoomIn, float, tiltHover, perspective3d, floatRotate } from '../utils/animations';
+import { fadeIn, staggerContainer, float, tiltHover, perspective3d } from '../utils/animations';
 import { FiMonitor, FiSmartphone, FiLayout, FiTrendingUp, FiServer, FiShield } from 'react-icons/fi';
 
 const Services = () => {
