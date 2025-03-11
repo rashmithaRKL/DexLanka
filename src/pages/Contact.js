@@ -8,19 +8,19 @@ const Contact = () => {
     {
       icon: <FiPhone className="w-6 h-6" />,
       title: "Phone",
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      content: "+94 78 5488 789",
+      link: "tel:+94 78 5488 789"
     },
     {
       icon: <FiMail className="w-6 h-6" />,
       title: "Email",
-      content: "contact@example.com",
-      link: "mailto:contact@example.com"
+      content: "dexlanka@gmail.com",
+      link: "dexlanka@gmail.com"
     },
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: "Location",
-      content: "123 Business Street, City, Country",
+      content: "Homagama, Colombo, Sri Lanka",
       link: "#map"
     }
   ];
