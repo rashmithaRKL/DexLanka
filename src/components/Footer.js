@@ -37,9 +37,9 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: <FiPhone />, text: "+1 (555) 123-4567" },
-    { icon: <FiMail />, text: "contact@example.com" },
-    { icon: <FiMapPin />, text: "123 Business Street, City, Country" }
+    { icon: <FiPhone />, text: "+94 78 548 8789" },
+    { icon: <FiMail />, text: "dexlanka@gmail.com" },
+    { icon: <FiMapPin />, text: "Homagama, Colombo, Sri Lanka" }
   ];
 
   return (
