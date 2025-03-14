@@ -30,10 +30,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FiFacebook />, url: "#" },
+    { icon: <FiFacebook />, url: "https://www.facebook.com/profile.php?id=61574091291394" },
     { icon: <FiTwitter />, url: "#" },
     { icon: <FiInstagram />, url: "#" },
-    { icon: <FiLinkedin />, url: "#" }
+    { icon: <FiGitHub />, url: "#" }
   ];
 
   const contactInfo = [
